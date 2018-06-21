@@ -117,12 +117,13 @@ namespace WpfApplication1.View
             PasswordBox pas = sender as PasswordBox;
             if (pas != null)
             {
-                if (!(pas.Password.Any(p => char.IsDigit(p))
-                    && pas.Password.Any(p => char.IsLetter(p))
-                    && pas.Password.Any(p => char.IsUpper(p))
-                    && pas.Password.Any(p => !char.IsLetterOrDigit(p))
-                    && pas.Password.All(p => !char.IsWhiteSpace(p))
-                    && pas.Password.Length > 8
+                if (!(
+                    //pas.Password.Any(p => char.IsDigit(p)) &&
+                    pas.Password.Any(p => char.IsLetter(p)) &&
+                    pas.Password.Any(p => char.IsSymbol(p)) &&
+                    //pas.Password.Any(p => !char.IsLetterOrDigit(p)) &&
+                    pas.Password.All(p => !char.IsWhiteSpace(p))
+                    //&& pas.Password.Length > 8
                     ))
                 {
                     PassCheck.Visibility = Visibility.Visible;
